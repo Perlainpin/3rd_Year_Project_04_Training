@@ -17,6 +17,9 @@ public class Firing : MonoBehaviour
 
     private int bulletsLeft, bulletsShot;
 
+    public Rigidbody playerRb;
+    public float recoilForce;
+
     private bool shooting, readyToShoot, reloading;
 
     public Camera fpsCam;
@@ -98,10 +101,16 @@ public class Firing : MonoBehaviour
         GameObject currentBullet = Instantiate(bullet, attackPoint.position, Quaternion.identity);
         currentBullet.GetComponent<Renderer>().enabled = true;
 
+        float maxLifeTime = currentBullet.GetComponent<CustomBullet>().maxLifeTime;
+        
         currentBullet.transform.forward = directionWithSpread.normalized;
 
         currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
         currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);
+
+        Destroy(currentBullet, maxLifeTime);
+
+        playerRb.AddForce(-directionWithSpread.normalized * recoilForce, ForceMode.Impulse);
 
         if(fire != null)
         {
@@ -113,8 +122,6 @@ public class Firing : MonoBehaviour
             
         bulletsLeft--;
         bulletsShot++;
-
-        //fire.SetActive(false);
 
         if (allowInvoke)
         {
