@@ -21,6 +21,8 @@ public class CustomBullet : MonoBehaviour
     int collisions;
     PhysicMaterial physics_mat;
 
+    bool isAnimated = false;
+
     private void Start()
     {
         Setup();
@@ -35,9 +37,14 @@ public class CustomBullet : MonoBehaviour
     {
         if (explosion != null)
         {
-            GameObject newExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
+            if (!isAnimated)
+            {
+                GameObject newExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
 
-            Destroy(newExplosion, explosion.GetComponent<ParticleSystem>().duration - 0.5f);
+                Destroy(newExplosion, explosion.GetComponent<ParticleSystem>().startLifetime);
+
+                isAnimated = true;
+            }
         }
 
         Collider[] enemies = Physics.OverlapSphere(transform.position, explosionRange, whatIsEnemies);
@@ -48,13 +55,10 @@ public class CustomBullet : MonoBehaviour
                 enemies[i].GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRange);
         }
 
-        
-
         Invoke("Delay", 0.05f);
     }
     private void Delay()
     {
-        Debug.Log("delay");
         Destroy(gameObject);
     }
 

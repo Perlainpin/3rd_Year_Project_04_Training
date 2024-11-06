@@ -15,12 +15,12 @@ public class Firing : MonoBehaviour
 
     public bool allowButtonHold;
 
-    private int bulletsLeft, bulletsShot;
+    public int bulletsLeft, bulletsShot;
 
     public Rigidbody playerRb;
     public float recoilForce;
 
-    private bool shooting, readyToShoot, reloading;
+    public bool shooting = false, reloading = false, readyToShoot = false;
 
     public Camera fpsCam;
     public Transform attackPoint;
@@ -51,30 +51,10 @@ public class Firing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MyInput();
+
     }
 
-    private void MyInput()
-    {
-        //to rework with new input manager
-        if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
-        else shooting = Input.GetKey(KeyCode.Mouse0);
-
-        if(Input.GetKey(KeyCode.R) && bulletsLeft < magazineSize && !reloading) 
-            Reload();
-
-        if (readyToShoot && shooting && !reloading && bulletsLeft <= 0)
-            Reload();
-
-        if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
-        {
-            bulletsShot = 0;
-            
-            Shoot();
-        }
-    }
-
-    private void Shoot()
+    public void Shoot()
     {
         readyToShoot = false;
 
@@ -139,7 +119,7 @@ public class Firing : MonoBehaviour
         allowInvoke = true;
     }
 
-    private void Reload()
+    public void Reload()
     {
         reloading = true;
         Invoke("ReloadFinished", reloadTime);

@@ -42,9 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Crapling",
+                    "name": "SwitchWeapon",
                     "type": "Button",
-                    "id": "9aa865a1-bc70-42d5-8dd9-e68b2ac1be2c",
+                    "id": "0ba2c3d8-50b4-4e1b-bd29-54c68cb8677a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "ca5bfab2-d034-43f3-94de-9d53e78581d2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -285,34 +294,23 @@
                 },
                 {
                     "name": "",
-                    "id": "dc961a84-59a7-4abc-a478-55af5a848efa",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "17edff23-020b-477b-b420-efde5ef225fe",
+                    "path": "<Mouse>/middleButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Crapling",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SwitchWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "9b20afeb-33c1-4648-87b5-ff8dcf009a74",
-                    "path": "<Mouse>/rightButton",
+                    "id": "04e17067-5f22-45fa-90cf-1cbf3a15ec2f",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Crapling",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "126c8e94-7f94-41f7-a055-dd49ef914bec",
-                    "path": "<Touchscreen>/{SecondaryTrigger}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crapling",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
