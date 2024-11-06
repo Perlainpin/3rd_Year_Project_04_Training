@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 239657256}
   - component: {fileID: 239657255}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SolidWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
