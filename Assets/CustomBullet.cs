@@ -64,7 +64,6 @@ public class CustomBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.collider.CompareTag("Bullet")) return;
 
         collisions++;
 
